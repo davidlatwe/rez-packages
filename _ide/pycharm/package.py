@@ -9,6 +9,11 @@ description = "The Python IDE for Professional Developers"
 
 authors = ["JetBrains"]
 
+_data = {
+    "label": "PyCharm (CE)",
+    "icon": "{root}/resources/pycharm.ico"
+}
+
 tools = [
     "project",
     "pycharm",
