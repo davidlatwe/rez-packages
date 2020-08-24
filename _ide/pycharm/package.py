@@ -10,6 +10,7 @@ description = "The Python IDE for Professional Developers"
 authors = ["JetBrains"]
 
 tools = [
+    "project",
     "pycharm",
 ]
 
@@ -17,7 +18,8 @@ variants = [
     ["platform-*"],
 ]
 
-build_command = False
+build_command = "python -m rezutil build {root}"
+private_build_requires = ["rezutil-1"]
 
 
 def commands():
@@ -36,6 +38,8 @@ def commands():
 
     else:
         print("Unknown platform: %s" % system.platform)
+
+    env.PATH.prepend("{root}/bin")
 
     # Set alias
     alias("charm", "pycharm")
