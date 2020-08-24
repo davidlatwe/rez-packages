@@ -3,7 +3,7 @@ name = "pycharm"
 
 uuid = "repository.dev.pycharm"
 
-version = "latest.CE"
+version = "latest"
 
 description = "The Python IDE for Professional Developers"
 
