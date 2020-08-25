@@ -8,6 +8,11 @@ version = "1.0.0"
 
 description = "Terminal"
 
+_data = {
+    "label": "Terminal",
+    "icon": "{root}/resources/terminal.svg"
+}
+
 tools = [
     "terminal",
 ]
