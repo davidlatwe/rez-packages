@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+pycharm $OZARK_DEV_ROOT
