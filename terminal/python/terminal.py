@@ -1,6 +1,7 @@
 
 import os
 import stat
+import tempfile
 import subprocess
 from rez.system import system
 
@@ -16,13 +17,22 @@ def spawn(with_rez=True):
         subprocess.call(["start"], shell=True, env=env)
 
     elif system.platform == "osx":
-        with open("tempenv", "w") as tempenv:
+        env.pop("REZ_STORED_PROMPT_SH", None)
+
+        with tempfile.NamedTemporaryFile("w", delete=False) as temp:
+            lines = list()
             for key, value in env.items():
-                tempenv.write("export %s=%s\n" % (key, value))
-            tempenv.write(system.shell)
-        st = os.stat("tempenv")
-        os.chmod("tempenv", st.st_mode | stat.S_IEXEC)
-        subprocess.call(["open", "-a", "Terminal", "tempenv"])
+                lines.append("export %s=\"%s\"" % (key, value))
+
+            lines.append("rm %s" % temp.name)  # self cleanup
+            lines.append(system.shell)  # keep shell window open
+
+            temp.writelines(lines)
+
+        st = os.stat(temp.name)
+        os.chmod(temp.name, st.st_mode | stat.S_IEXEC)
+
+        subprocess.call(["open", "-a", "Terminal", temp.name])
 
     elif system.platform == "linux":
         raise NotImplementedError
