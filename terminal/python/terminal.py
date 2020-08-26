@@ -27,7 +27,7 @@ def spawn(with_rez=True):
             lines.append("rm %s" % temp.name)  # self cleanup
             lines.append(system.shell)  # keep shell window open
 
-            temp.writelines(lines)
+            temp.write("\n".join(lines))
 
         st = os.stat(temp.name)
         os.chmod(temp.name, st.st_mode | stat.S_IEXEC)
