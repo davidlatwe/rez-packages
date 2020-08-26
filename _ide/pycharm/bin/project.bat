@@ -1,2 +1,2 @@
 @echo off
-pycharm %OZARK_DEV_ROOT%
+pycharm %OZARK_DEV_PROJ%
