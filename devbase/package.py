@@ -1,5 +1,8 @@
 
 name = "devbase"
+
+description = "Development package/repository root path setup"
+
 version = "1.0.0"
 
 
