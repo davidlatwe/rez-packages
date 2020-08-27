@@ -54,6 +54,7 @@ tools = [
 
 requires = [
     # Dependencies
+    "house",
     "pymongo",
     "Qt.py",
 ]

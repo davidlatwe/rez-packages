@@ -44,6 +44,7 @@ tools = [
 
 requires = [
     # Dependencies
+    "house",
     "avalon",
     "pyblish_qml",
 ]
