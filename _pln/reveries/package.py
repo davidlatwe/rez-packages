@@ -46,6 +46,7 @@ requires = [
     # Dependencies
     "house",
     "avalon",
+    "avalon_sftpc",
     "pyblish_qml",
 ]
 
