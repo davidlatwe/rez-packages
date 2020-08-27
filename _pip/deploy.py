@@ -31,7 +31,7 @@ packages = [
 
 
 def deploy(package, release=None):
-    print("Deploying package %s ..." % package["name"])
+    print("Deploying package %s ..." % package)
 
     if release:
         args = ["rez-release"]
