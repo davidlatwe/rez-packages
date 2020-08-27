@@ -69,6 +69,7 @@ def commands():
 
     # Config
     env.AVALON_CONFIG = "reveries"
+    env.CONFIG_ROOT = "{root}"
 
     # Deadline
     env.AVALON_DEADLINE = "{env.HOUSE_PIPELINE_DEADLINE}"
