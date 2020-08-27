@@ -85,3 +85,9 @@ def commands():
     # DCC App Setup
     if "maya" in resolve:
         env.PYTHONPATH.append("{root}/setup/maya")
+        env.AVALON_APP = "maya"
+        # (TODO) How to make workdir ?
+        #   Perhaps a project-lobby-like path where is on top of all assets ?
+        #   Once get in DCC, workfile app take over, but workfile app still
+        #   need .toml to do the job.
+        env.AVALON_WORKDIR = ""
