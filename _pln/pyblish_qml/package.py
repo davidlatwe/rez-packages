@@ -50,7 +50,7 @@ tools = [
 
 requires = [
     # Dependencies
-    "python-3",
+    "pyblish_base",
     "Qt.py",
 ]
 
@@ -68,5 +68,19 @@ def build_command():
 
 # Set up environment
 def commands():
+    import os
+    import subprocess
     env = globals()["env"]
+
     env.PYTHONPATH.prepend("{root}")
+
+    # Get python executable path for Pyblish finding python and pyqt5
+    # This is for Houdini.
+
+    environ = os.environ.copy()
+    environ["PATH"] = str(env.PATH.value())
+    result = subprocess.check_output(["where", "python"], env=environ)
+    result = result.decode()
+    python_exec = result.split("\n")[0].strip()
+
+    env.PYBLISH_QML_PYTHON_EXECUTABLE = python_exec
