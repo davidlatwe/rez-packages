@@ -54,6 +54,7 @@ tools = [
 
 requires = [
     # Dependencies
+    "pymongo",
     "Qt.py",
 ]
 
@@ -73,3 +74,8 @@ def build_command():
 def commands():
     env = globals()["env"]
     env.PYTHONPATH.prepend("{root}")
+
+    # MongoDB
+    env.AVALON_MONGO = "{env.HOUSE_PIPELINE_MONGO}"
+    env.AVALON_DB = "avalon"
+    env.AVALON_TIMEOUT = 5000

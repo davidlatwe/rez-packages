@@ -2,17 +2,18 @@
 early = globals()["early"]
 
 
-name = "reveries"
+name = "avalon_sftpc"
 
-description = "Avalon post-production pipeline configuration module"
+description = "Avalon SFTP Client, for uploading Avalon workfile or " \
+              "representation to remote site via SFTP"
 
 
 @early()
 def __payload():
     from earlymod import util
     return util.git_build_clone(
-        url="https://github.com/MoonShineVFX/reveries-config.git",
-        branch="production",
+        url="https://github.com/davidlatwe/avalon-sftpc.git",
+        branch="master",
     )
 
 
@@ -21,7 +22,7 @@ def version():
     import subprocess
     data = globals()["this"].__payload
 
-    version_str = "1.0.1"  # (TODO) add version query
+    version_str = "0.3.0"  # (TODO) add version query
     branch_name = subprocess.check_output(
         ["git", "branch", "--show-current"],
         universal_newlines=True,
@@ -40,12 +41,13 @@ def authors():
 
 
 tools = [
+    "python -m avalon_sftpc --demo",
 ]
 
 requires = [
     # Dependencies
     "avalon",
-    "pyblish_qml",
+    "pysftp",
 ]
 
 
@@ -64,11 +66,3 @@ def build_command():
 def commands():
     env = globals()["env"]
     env.PYTHONPATH.prepend("{root}")
-
-    # Config
-    env.AVALON_CONFIG = "reveries"
-
-    # Deadline
-    env.AVALON_DEADLINE = "{env.HOUSE_PIPELINE_DEADLINE}"
-    env.AVALON_DEADLINE_AUTH = "{env.HOUSE_PIPELINE_DEADLINE_AUTH}"
-    env.AVALON_DEADLINE_APP = "{env.HOUSE_PIPELINE_DEADLINE_APP}"
