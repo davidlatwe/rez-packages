@@ -2,7 +2,7 @@
 early = globals()["early"]
 
 
-name = "pyblish_base"
+name = "pyblish"
 
 description = "Test-driven content creation, see http://pyblish.com"
 

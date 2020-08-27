@@ -50,7 +50,7 @@ tools = [
 
 requires = [
     # Dependencies
-    "pyblish_base",
+    "pyblish",
     "Qt.py",
 ]
 
