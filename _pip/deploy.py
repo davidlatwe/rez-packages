@@ -23,8 +23,6 @@ packages = [
     "pygments",
     "typing_extensions",
 
-    "pymongo",
-
     "python_dotenv",
 
 ]
