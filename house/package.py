@@ -9,7 +9,6 @@ version = "1.0.0"
 description = "Studio/Site-wide production environment"
 
 requires = [
-    "python",
     "python_dotenv",
 ]
 
