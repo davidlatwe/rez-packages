@@ -1,0 +1,15 @@
+
+schema = "avalon-core:application-1.0"
+
+label = "Autodesk Maya 2020"
+application_dir = "maya"
+default_dirs = [
+	"scenes",
+	"data",
+	"renderData/shaders",
+	"images"
+]
+executable = "maya"
+
+[copy]
+"{CONFIG_ROOT}/res/maya/workspace.mel" = "workspace.mel"

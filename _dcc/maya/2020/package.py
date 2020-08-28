@@ -1,15 +1,29 @@
 
+late = globals()["late"]
+
+
 name = "maya"
 
 version = "2020"
 
 description = "Autodesk Maya 2020"
 
-tools = [
-    "maya",
-    "mayapy",
-    "mayabatch",
-]
+
+@late()
+def tools():
+    import os
+
+    _tools = [
+        "maya",
+        "mayapy",
+    ]
+
+    pipeline_tool = os.getenv("PIPELINE_LAUNCH_TOOL")
+    if pipeline_tool:
+        _tools.insert(0, pipeline_tool)
+
+    return _tools
+
 
 build_command = False
 
