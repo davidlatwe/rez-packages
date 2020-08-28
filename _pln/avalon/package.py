@@ -7,7 +7,7 @@ name = "avalon"
 description = "The safe post-production pipeline"
 
 _data = {
-    "icon": "{root}/resources/avalon.ico"
+    "icon": "{root}/res/icons/ico/avalon.ico"
 }
 
 
