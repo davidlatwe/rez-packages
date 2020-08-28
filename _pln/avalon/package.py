@@ -57,8 +57,6 @@ requires = [
     "house",
     "pymongo",
     "Qt.py",
-    # Magic
-    "merlin",
 ]
 
 

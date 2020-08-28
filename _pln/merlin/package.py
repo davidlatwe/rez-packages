@@ -40,13 +40,13 @@ def commands():
     # Merlin command line tools
     env.PATH.prepend("{root}/bin")
     env.PYTHONPATH.prepend("{root}/python")
+    # Avalon application toml
+    env.PATH.prepend("{root}/apps")
 
     # Inject tools into DCC App package
     env.PIPELINE_LAUNCH_TOOL = "go-avalon"
 
-    # Avalon application toml
-    env.PATH.prepend("{root}/apps")
-
     # Default
-    env.AVALON_ASSET = "_Lobby"
+    env.AVALON_SILO = "_Lobby"
+    env.AVALON_ASSET = "_Dummy"
     env.AVALON_TASK = "_general"

@@ -1,7 +1,7 @@
 
 schema = "avalon-core:application-1.0"
 
-label = "Autodesk Maya 2020"
+label = "Autodesk Maya"
 application_dir = "maya"
 default_dirs = [
 	"scenes",
