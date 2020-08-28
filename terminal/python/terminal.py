@@ -6,12 +6,12 @@ import subprocess
 from rez.system import system
 
 
-def spawn(with_rez=True):
+def spawn():
     env = os.environ.copy()
 
-    if with_rez:
-        env["PATH"] = os.path.pathsep.join(
-            [os.environ["REZ_CORE_BIN_PATH"], os.environ["PATH"]])
+    # Include rez command line tools
+    env["PATH"] = os.path.pathsep.join(
+        [os.environ["REZ_CORE_BIN_PATH"], os.environ["PATH"]])
 
     if system.platform == "windows":
         subprocess.call(["start"], shell=True, env=env)

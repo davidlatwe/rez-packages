@@ -13,6 +13,10 @@ _data = {
     "icon": "{root}/resources/terminal.svg"
 }
 
+requires = [
+    "rez",
+]
+
 tools = [
     "terminal",
 ]
