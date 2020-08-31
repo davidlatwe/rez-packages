@@ -14,6 +14,7 @@ def __payload():
     return util.git_build_clone(
         url="https://github.com/davidlatwe/avalon-sftpc.git",
         branch="master",
+        tag="535ac3cf8362d633cf49227a388e04c99dfe3c69",
     )
 
 
@@ -23,11 +24,7 @@ def version():
     data = globals()["this"].__payload
 
     version_str = "0.3.0"  # (TODO) add version query
-    branch_name = subprocess.check_output(
-        ["git", "branch", "--show-current"],
-        universal_newlines=True,
-        cwd=data["repo"],
-    ).strip()
+    branch_name = data["branch"]
 
     major, minor, patch = version_str.split(".")
     return "%s-%s.%s.%s" % (branch_name, major, minor, patch)
@@ -35,9 +32,8 @@ def version():
 
 @early()
 def authors():
-    from earlymod import util
     data = globals()["this"].__payload
-    return util.git_authors(data["repo"])
+    return data["authors"]
 
 
 tools = [

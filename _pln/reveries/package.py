@@ -13,6 +13,7 @@ def __payload():
     return util.git_build_clone(
         url="https://github.com/MoonShineVFX/reveries-config.git",
         branch="production",
+        tag="0ad0c6d00fcefa71a7473ffabd4c6138ac23a536"
     )
 
 
@@ -22,11 +23,7 @@ def version():
     data = globals()["this"].__payload
 
     version_str = "1.0.1"  # (TODO) add version query
-    branch_name = subprocess.check_output(
-        ["git", "branch", "--show-current"],
-        universal_newlines=True,
-        cwd=data["repo"],
-    ).strip()
+    branch_name = data["branch"]
 
     major, minor, patch = version_str.split(".")
     return "%s-%s.%s.%s" % (branch_name, major, minor, patch)
@@ -34,9 +31,8 @@ def version():
 
 @early()
 def authors():
-    from earlymod import util
     data = globals()["this"].__payload
-    return util.git_authors(data["repo"])
+    return data["authors"]
 
 
 tools = [
