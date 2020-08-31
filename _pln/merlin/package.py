@@ -14,21 +14,14 @@ requires = [
 ]
 
 
-@late()
-def tools():
-    import os
-    # Avalon tools
-    _tools = [
-        "loader",
-    ]
-    if os.getenv("AVALON_ROLE_PROJECT_ADMIN"):
-        _tools.append("manager")
-
-    return _tools
-
-
 private_build_requires = ["rezutil-1"]
 build_command = "python -m rezutil build {root}"
+
+
+@late()
+def pipeline_dcc_launcher():
+    # Inject tools into DCC App package
+    return "go-avalon"
 
 
 def commands():
@@ -42,6 +35,3 @@ def commands():
     env.PYTHONPATH.prepend("{root}/python")
     # Avalon application toml
     env.PATH.prepend("{root}/apps")
-
-    # Inject tools into DCC App package
-    env.PIPELINE_LAUNCH_TOOL = "go-avalon"

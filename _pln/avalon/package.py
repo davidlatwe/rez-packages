@@ -1,5 +1,6 @@
 
 early = globals()["early"]
+late = globals()["late"]
 
 
 name = "avalon"
@@ -7,6 +8,7 @@ name = "avalon"
 description = "The safe post-production pipeline"
 
 _data = {
+    "label": "Avalon",
     "icon": "{root}/res/icons/ico/avalon.ico"
 }
 
@@ -48,9 +50,23 @@ def authors():
     return data["authors"]
 
 
-tools = [
-    "python -m avalon",
-]
+@late()
+def tools():
+    in_context = globals()["in_context"]
+    # Avalon tools
+    _tools = [
+        "loader",
+    ]
+
+    if in_context():
+        context = globals()["context"]
+        for pkg in context.resolved_packages:
+            if getattr(pkg, "is_project_admin", False):
+                _tools.append("manager")
+                break
+
+    return _tools
+
 
 requires = [
     # Dependencies

@@ -11,16 +11,19 @@ description = "Autodesk Maya 2020"
 
 @late()
 def tools():
-    import os
+    in_context = globals()["in_context"]
 
     _tools = [
         "maya",
         "mayapy",
     ]
 
-    pipeline_tool = os.getenv("PIPELINE_LAUNCH_TOOL")
-    if pipeline_tool:
-        _tools.insert(0, pipeline_tool)
+    if in_context():
+        context = globals()["context"]
+        for pkg in context.resolved_packages:
+            pipeline_tool = getattr(pkg, "pipeline_dcc_launcher", None)
+            if pipeline_tool:
+                _tools.insert(0, pipeline_tool)
 
     return _tools
 
