@@ -34,16 +34,18 @@ def init_workdir():
     )
 
     session = api.Session
+    session["AVALON_SILO"] = "_"  # required by workfile app
+    session["AVALON_SILO"] = "_"  # required by workfile app
     session["AVALON_ASSET"] = "_Lobby"
     session["AVALON_TASK"] = "_general"
 
-    def mock_find():
+    def mock_find(*args, **kwargs):
         lobby = {"work": "{root}/{project}/Avalon/{asset}/{task}/{app}"}
         return {"data": {}, "config": {"template": lobby}}
 
     with patch(io, "find_one", mock_find):
         app = App()
-        env = app.environ(api.Session)
+        env = app.environ(session)
         app.initialize(env)
 
     lib.launch(
