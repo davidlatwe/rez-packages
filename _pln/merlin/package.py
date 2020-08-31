@@ -45,8 +45,3 @@ def commands():
 
     # Inject tools into DCC App package
     env.PIPELINE_LAUNCH_TOOL = "go-avalon"
-
-    # Default
-    env.AVALON_SILO = "_Lobby"
-    env.AVALON_ASSET = "_Dummy"
-    env.AVALON_TASK = "_general"
