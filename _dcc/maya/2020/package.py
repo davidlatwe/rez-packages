@@ -9,23 +9,9 @@ version = "2020"
 description = "Autodesk Maya 2020"
 
 
-@late()
-def tools():
-    in_context = globals()["in_context"]
-
-    _tools = [
-        "maya",
-        "mayapy",
-    ]
-
-    if in_context():
-        context = globals()["context"]
-        for pkg in context.resolved_packages:
-            pipeline_tool = getattr(pkg, "pipeline_dcc_launcher", None)
-            if pipeline_tool:
-                _tools.insert(0, pipeline_tool)
-
-    return _tools
+tools = [
+    "maya",
+]
 
 
 build_command = False

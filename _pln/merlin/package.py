@@ -18,12 +18,6 @@ private_build_requires = ["rezutil-1"]
 build_command = "python -m rezutil build {root}"
 
 
-@late()
-def pipeline_dcc_launcher():
-    # Inject tools into DCC App package
-    return "go-avalon"
-
-
 def commands():
     env = globals()["env"]
 
