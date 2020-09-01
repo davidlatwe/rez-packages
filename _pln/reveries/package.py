@@ -9,17 +9,25 @@ description = "Avalon post-production pipeline configuration module"
 
 @early()
 def __payload():
+    import os
     from earlymod import util
-    return util.git_build_clone(
-        url="https://github.com/MoonShineVFX/reveries-config.git",
-        branch="production",
-        tag="0ad0c6d00fcefa71a7473ffabd4c6138ac23a536"
+    local = {
+        "path": os.path.sep.join([os.environ["MY_DEVS"], "reveries-config"]),
+        "tag": "localdev",
+    }
+    remote = {
+        "url": "https://github.com/MoonShineVFX/reveries-config.git",
+        "branch": "production",
+        "tag": "0ad0c6d00fcefa71a7473ffabd4c6138ac23a536",
+    }
+    return util.git_payload(
+        local=local,
+        remote=remote,
     )
 
 
 @early()
 def version():
-    import subprocess
     data = globals()["this"].__payload
 
     version_str = "1.0.1"  # (TODO) add version query
@@ -53,7 +61,7 @@ private_build_requires = ["rezutil-1"]
 @early()
 def build_command():
     data = globals()["this"].__payload
-    return "python -m rezutil build {root}".format(
+    return "python -m rezutil build {root} --quiet".format(
         root=data["repo"],
     )
 

@@ -27,9 +27,8 @@ def __payload():
         ).strip()
 
     local = {
+        "path": os.path.sep.join([os.environ["MY_DEVS"], "avalon-core"]),
         "tag": "localdev",
-        "path": os.path.sep.join([os.environ["OZARK_DEV_ROOT"],
-                                  "avalon-core"]),
     }
     remote = {
         "url": "https://github.com/MoonShineVFX/avalon-core.git",
@@ -86,13 +85,13 @@ requires = [
 ]
 
 
-private_build_requires = ["devbase-1", "rezutil-1"]
+private_build_requires = ["rezutil-1"]
 
 
 @early()
 def build_command():
     data = globals()["this"].__payload
-    return "python -m rezutil build {root}".format(
+    return "python -m rezutil build {root} --quiet".format(
         root=data["repo"],
     )
 
