@@ -15,6 +15,7 @@ _data = {
 
 @early()
 def __payload():
+    import os
     from earlymod import util
 
     def get_version(data):
@@ -25,10 +26,19 @@ def __payload():
             cwd=data["repo"],
         ).strip()
 
-    return util.git_build_clone(
-        url="https://github.com/MoonShineVFX/avalon-core.git",
-        branch="production",
-        tag="91e31cac94cb814d4829c5ba26b0e53dde8f3d7d",
+    local = {
+        "tag": "localdev",
+        "path": os.path.sep.join([os.environ["OZARK_DEV_ROOT"],
+                                  "avalon-core"]),
+    }
+    remote = {
+        "url": "https://github.com/MoonShineVFX/avalon-core.git",
+        "branch": "production",
+        "tag": "91e31cac94cb814d4829c5ba26b0e53dde8f3d7d",
+    }
+    return util.git_payload(
+        local=local,
+        remote=remote,
         callbacks=[get_version]
     )
 
@@ -76,7 +86,7 @@ requires = [
 ]
 
 
-private_build_requires = ["rezutil-1"]
+private_build_requires = ["devbase-1", "rezutil-1"]
 
 
 @early()
