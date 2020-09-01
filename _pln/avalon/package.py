@@ -107,7 +107,39 @@ def commands():
     env.AVALON_DB = "avalon"
     env.AVALON_TIMEOUT = 5000
 
+    env.AVALON_SESSION_SCHEMA = "avalon-core:session-3.0"
+
     # DCC App Setup
     if "maya" in resolve:
         env.PYTHONPATH.append("{root}/setup/maya")
         env.AVALON_APP = "maya"
+        env.AVALON_APP_NAME = "maya"
+
+
+def post_commands():
+    import os
+    env = globals()["env"]
+
+    # (NOTE) convert it into `list` or it will always return True when
+    #   checking __contains__.
+    #   >>> "anything" in env.keys()
+    #   True
+    #   >>> "anything" in list(env.keys())
+    #   False
+    #
+    current_env_keys = list(env.keys())
+
+    # Startup workdir
+    required = [
+        "AVALON_PROJECTS",
+        "AVALON_PROJECT",
+        "AVALON_APP",
+    ]
+    if all(k in current_env_keys for k in required):
+        env.AVALON_WORKDIR = os.path.sep.join([
+            "{env.AVALON_PROJECTS}",
+            "{env.AVALON_PROJECT}",
+            "Avalon",
+            "_Lobby",
+            "{env.AVALON_APP}",
+        ])
