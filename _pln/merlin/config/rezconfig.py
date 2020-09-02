@@ -9,7 +9,12 @@ __avalon_uri = os.getenv("OZARK_MONGODB_AVALON",
 __avalon_loc = os.getenv("OZARK_LOCATION_AVALON",
                          "mongozark@avalon.rez.avalon")
 
-packages_path = ModifyList(append=[__avalon_loc])
+
+__profiles_path = [
+    __avalon_loc,
+]
+packages_path = ModifyList(append=__profiles_path)
+
 
 plugins = {
     "package_repository": {
@@ -20,7 +25,7 @@ plugins = {
             "location": {
                 "avalon": __avalon_loc,
             },
-            "profiles": ModifyList(append=[__avalon_loc]),
+            "profiles": __profiles_path,
         },
     }
 }
