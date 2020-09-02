@@ -8,13 +8,20 @@ version = "2020"
 
 description = "Autodesk Maya 2020"
 
+_data = {
+    # Allzpark
+    "label": "Maya",
+    "icon": "{root}/resources/mayaico.png"
+}
+
 
 tools = [
     "maya",
 ]
 
 
-build_command = False
+private_build_requires = ["rezutil-1"]
+build_command = "python -m rezutil build {root}"
 
 
 def commands():
