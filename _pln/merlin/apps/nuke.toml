@@ -1,0 +1,10 @@
+
+schema = "avalon-core:application-1.0"
+
+label = "Nuke"
+application_dir = "nuke"
+default_dirs = [
+	"precomps",
+	"renders"
+]
+executable = "nuke"

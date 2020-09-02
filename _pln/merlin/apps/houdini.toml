@@ -1,0 +1,11 @@
+
+schema = "avalon-core:application-1.0"
+
+label = "Houdini"
+application_dir = "houdini"
+default_dirs = [
+	"scenes",
+	"data",
+	"renders"
+]
+executable = "houdini"

@@ -1,7 +1,4 @@
 
-late = globals()["late"]
-
-
 name = "maya"
 
 version = "2020"
@@ -25,10 +22,10 @@ build_command = "python -m rezutil build {root}"
 
 
 def commands():
-    system = globals()["system"]
     env = globals()["env"]
+    system = globals()["system"]
 
-    env.MAYA_VERSION = "2020"
+    env.MAYA_VERSION = str(env.REZ_MAYA_VERSION)
 
     if system.platform == "windows":
         env.MAYA_LOCATION = "C:/Program Files/Autodesk/Maya{env.MAYA_VERSION}"

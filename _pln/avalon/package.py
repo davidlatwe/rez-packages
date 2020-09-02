@@ -136,6 +136,16 @@ def commands():
         env.AVALON_APP = "maya"
         env.AVALON_APP_NAME = "maya"
 
+    if "houdini" in resolve:
+        env.HOUDINI_SCRIPT_PATH.append("{root}/res/houdini")
+        env.AVALON_APP = "houdini"
+        env.AVALON_APP_NAME = "houdini"
+
+    if "nuke" in resolve:
+        env.NUKE_PATH.append("{root}/setup/nuke/nuke_path")
+        env.AVALON_APP = "nuke"
+        env.AVALON_APP_NAME = "nuke"
+
 
 def post_commands():
     import os
