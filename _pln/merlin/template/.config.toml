@@ -1,0 +1,176 @@
+schema = "avalon-core:config-1.0"
+
+[template]
+# Arg {user} has been removed.
+# Better work file management tool is required for opt-in {user}.
+work = "{root}/{project}/Avalon/{silo}/{asset}/work/{task}/{app}"
+publish = "{root}/{project}/Avalon/{silo}/{asset}/publish/{subset}/v{version:0>3}/{representation}"
+
+[[tasks]]
+name = "modeling"
+
+[[tasks]]
+name = "rigging"
+
+[tasks.options.autoModelUpdate]
+label = "Auto update model"
+default = false
+help = "Auto update model to latest version after model publish."
+
+[[tasks]]
+name = "lookdev"
+
+[[tasks]]
+name = "charFX"
+
+[[tasks]]
+name = "crowdFX"
+
+[[tasks]]
+name = "FX"
+
+[[tasks]]
+name = "setdressing"
+
+[[tasks]]
+name = "animating"
+
+[[tasks]]
+name = "layout"
+
+[[tasks]]
+name = "lighting"
+
+[[tasks]]
+name = "compositing"
+
+
+[[groups]]
+name = "Trash Bin"
+icon = "trash-o"
+color = "#C4CEDC"
+order = -99
+
+[[groups]]
+name = "Renders"
+icon = "server"
+color = "#22EAAA"
+order = 10
+
+
+# Family name should be lower case
+
+[[families]]
+name = "reveries.shotpkg"
+label = "Shot Package"
+icon = "shopping-basket"
+
+[[families]]
+name = "reveries.write"
+label = "Write"
+icon = "ticket"
+
+[[families]]
+name = "reveries.renderlayer"
+label = "Render Layer"
+icon = "server"
+
+[[families]]
+name = "reveries.model"
+label = "Model"
+icon = "cubes"
+
+[[families]]
+name = "reveries.xgen"
+label = "XGen"
+icon = "paw"
+
+[[families]]
+name = "reveries.xgen.legacy"
+label = "XGen Legacy"
+icon = "paw"
+hideFilter = true
+
+[[families]]
+name = "reveries.xgen.interactive"
+label = "XGen Interactive"
+icon = "paw"
+hideFilter = true
+
+[[families]]
+name = "reveries.rig"
+label = "Rig"
+icon = "sitemap"
+
+[[families]]
+name = "reveries.look"
+label = "Look"
+icon = "paint-brush"
+
+[[families]]
+name = "reveries.texture"
+label = "Texture"
+icon = "picture-o"
+
+[[families]]
+name = "reveries.setdress"
+label = "Set Dress"
+icon = "tree"
+
+[[families]]
+name = "reveries.animation"
+label = "Animation"
+icon = "male"
+
+[[families]]
+name = "reveries.pointcache"
+label = "Point Cache"
+icon = "diamond"
+
+[[families]]
+name = "reveries.pointcache.abc"
+label = "Point Cache"
+icon = "diamond"
+hideFilter = true
+
+[[families]]
+name = "reveries.pointcache.gpu"
+label = "Point Cache"
+icon = "diamond"
+hideFilter = true
+
+[[families]]
+name = "reveries.pointcache.fbx"
+label = "Point Cache"
+icon = "diamond"
+hideFilter = true
+
+[[families]]
+name = "reveries.camera"
+label = "Camera"
+icon = "video-camera"
+
+[[families]]
+name = "reveries.lightset"
+label = "Light Set"
+icon = "lightbulb-o"
+
+[[families]]
+name = "reveries.standin"
+label = "Arnold Stand-In"
+icon = "coffee"
+
+[[families]]
+name = "reveries.atomscrowd"
+label = "Atoms Crowd"
+icon = "building"
+
+[[families]]
+name = "reveries.mayashare"
+label = "Maya Share (.ma)"
+icon = "share-square-o"
+
+[[families]]
+name = "reveries.vdbcache"
+label = "VDB Cache"
+icon = "qrcode"

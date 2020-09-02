@@ -1,0 +1,24 @@
+schema = "avalon-core:inventory-1.0"
+
+
+# project settings
+root = "O:"
+renderRoot = ""
+standinRoot = ""
+codename = ""
+resolution_width = 1920
+resolution_height = 1080
+stereo = false
+fps = 30
+fpses = []
+handles = 1
+edit_in = 101
+edit_out = 200
+
+[role]
+admin = [
+]
+
+[pipeline]
+[pipeline.maya]
+turntable = "LookDevStage"
