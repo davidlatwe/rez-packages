@@ -30,6 +30,10 @@ def commands():
         env.HOUDINI_LOCATION = "C:/Program Files/Side Effects Software/"\
                                "Houdini {env.HOUDINI_VERSION}"
 
+        env.HOUDINI_SCRIPT_PATH.append("{env.HOUDINI_LOCATION}/houdini/scripts")
+        env.HOUDINI_OTLSCAN_PATH.append("@/otls")
+        env.HOUDINI_MENU_PATH.append("@/")
+
     elif system.platform == "linux":
         pass
 
