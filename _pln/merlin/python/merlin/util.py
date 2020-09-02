@@ -4,7 +4,7 @@ import shutil
 import identicon
 import subprocess
 from ozark import util as ozark_util
-from avalon import inventory as inventory_io
+from avalon import api, io, inventory as inventory_io
 from avalon.vendor import toml
 
 
@@ -64,4 +64,6 @@ def build(location=None):
     config = _read(os.path.join(res_dir, ".config.toml"))
     inventory = _read(os.path.join(res_dir, ".inventory.toml"))
 
+    io.install()
+    api.Session["AVALON_PROJECT"] = project
     inventory_io.save(project, config, inventory)

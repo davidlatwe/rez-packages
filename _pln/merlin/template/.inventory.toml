@@ -18,6 +18,8 @@ edit_out = 200
 [role]
 admin = [
 ]
+member = [
+]
 
 [pipeline]
 [pipeline.maya]

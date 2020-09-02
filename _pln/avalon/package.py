@@ -96,6 +96,29 @@ def build_command():
     )
 
 
+def pre_commands():
+    env = globals()["env"]
+
+    # (NOTE) convert it into `list` or it will always return True when
+    #   checking __contains__.
+    #   >>> "anything" in env.keys()
+    #   True
+    #   >>> "anything" in list(env.keys())
+    #   False
+    #
+    current_env_keys = list(env.keys())
+
+    env.AVALON_SESSION_SCHEMA = "avalon-core:session-3.0"
+    session_v3_required = [
+        "AVALON_PROJECTS",
+        "AVALON_PROJECT",
+        "AVALON_CONFIG",
+    ]
+    for key in session_v3_required:
+        if key not in current_env_keys:
+            env[key] = "__placeholder__"
+
+
 # Set up environment
 def commands():
     env = globals()["env"]
@@ -106,8 +129,6 @@ def commands():
     env.AVALON_MONGO = "{env.HOUSE_PIPELINE_MONGO}"
     env.AVALON_DB = "avalon"
     env.AVALON_TIMEOUT = 5000
-
-    env.AVALON_SESSION_SCHEMA = "avalon-core:session-3.0"
 
     # DCC App Setup
     if "maya" in resolve:
