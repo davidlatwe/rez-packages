@@ -15,10 +15,10 @@ so we can apply them with this package environment.
 
 build_command = False
 
-tools = [
-    "cl",
-    "cmake"
-]
+# tools = [
+#     "cl",
+#     "cmake"
+# ]
 
 
 def commands():
@@ -32,7 +32,8 @@ def commands():
 
     def collect_environment(cmd):
         # Return the new resulting environment variables from the command
-        result = subprocess.check_output("%s & set" % cmd)
+        result = subprocess.check_output("%s & set" % cmd,
+                                         universal_newlines=True)
 
         devenv = {}
         for line in result.splitlines():
@@ -48,7 +49,7 @@ def commands():
             
             # In some cases values end with \\ for no reason. Let's force remove it only
             # from those that do not seem to refer to a path (don't have :\ in it, like C:\) 
-            if not ":\\" in value and value.endswith("\\"):
+            if ":\\" not in value and value.endswith("\\"):
                 value = value[:-1]
             
             paths = [x.strip() for x in value.split(os.pathsep) if x.strip()]
